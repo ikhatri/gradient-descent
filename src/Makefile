@@ -6,7 +6,7 @@ FLAGS = -std=c++11 -Wall
 all: main
 
 main: gradientDescent.cpp
-	$(CXX) $(FLAGS) $^ -o gradientDescent
+	$(CXX) $(FLAGS) $^ -o GradientDescent.app
 
 clean:
-	rm gradientDescent
+	rm *.app

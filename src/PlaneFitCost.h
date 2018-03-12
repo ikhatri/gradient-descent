@@ -51,9 +51,10 @@ vector<Vector3f> PlaneFitCost::getGradient(){
   cout << t1 << endl;
   // t2 is the gradient with respect to p0
   // 2 * d * nhat where d is m * nhat
-  Vector3f t2 = 2*p[0]*p[0].transpose()*m;
+  Eigen::Matrix<float, 3, Eigen::Dynamic> n_hat(3, data.size());
+  n_hat = p[0].replicate(1, data.size());
+  Vector3f t2 = 2*(n_hat)*(m*p[0]);
   //Vector3f t2 = 2*(m*p[0])*p[0];
-  cout << "Print some shit" << endl;
   grad.push_back(t1);
   grad.push_back(t2);
   return grad;
